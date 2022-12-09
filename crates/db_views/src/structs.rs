@@ -14,6 +14,7 @@ use lemmy_db_schema::{
     private_message::PrivateMessage,
     private_message_report::PrivateMessageReport,
     registration_application::RegistrationApplication,
+    review_comment::ReviewComment,
     site::Site,
   },
   SubscribedType,
@@ -126,4 +127,14 @@ pub struct SiteView {
 pub struct LocalUserDiscussionLanguageView {
   pub local_user: LocalUserSettings,
   pub language: Language,
+}
+
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]
+pub struct ReviewCommentView {
+  pub review_comment: ReviewComment,
+  pub comment: Comment,
+  pub post: Post,
+  pub community: CommunitySafe,
+  pub comment_creator: PersonSafe,
+  pub resolver: Option<PersonSafe>,
 }
